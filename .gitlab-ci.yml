@@ -1,15 +1,15 @@
-stages:
-  - test
+image: gradle:alpine
 
-java:
-  stage: test
-  image: gradle:jdk17-alpine
-  script:
-    - gradle run
-  artifacts:
-    when: always
-    reports:
-      junit: build/test-results/test/**/TEST-*.xml
-  only:
-    - master
-    - merge_requests
+before_script:
+  - GRADLE_USER_HOME="$(pwd)/.gradle"
+  - export GRADLE_USER_HOME
+
+build:
+  stage: build
+  script: gradle --build-cache assemble
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
