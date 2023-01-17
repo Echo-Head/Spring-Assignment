@@ -1,10 +1,15 @@
 stages:
-  - build
+  - test
 
-build:
-  stage: build
+java:
+  stage: test
+  image: gradle:jdk17-alpine
   script:
-    - gradle build
+    - gradle run
+  artifacts:
+    when: always
+    reports:
+      junit: build/test-results/test/**/TEST-*.xml
   only:
-    - main
     - master
+    - merge_requests
