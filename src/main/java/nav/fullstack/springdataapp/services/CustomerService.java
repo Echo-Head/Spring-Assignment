@@ -42,11 +42,25 @@ public class CustomerService {
     }
 
     public Boolean changeCustomerPhoneNumber(String phone, int customerId){
-        System.out.println("den kom til service -------------------------");
         customerRepository.updateCustomerPhoneNumber(phone,customerId);
         return true;
+
     }
 
+//public Boolean updateCustomerPhone(int customerId, String phone){
+  //      Customer customer = customerRepository.findById(customerId).get();
+    //    customer.setPhone(phone);
+      //  customerRepository.save(customer);
+       // return true;
+
+//}
+
+// for each country
+    //
+Boolean countryWithMostCustomers(){
+  customerRepository.countryWithMostCustomers()
+
+};
 
 
 }
