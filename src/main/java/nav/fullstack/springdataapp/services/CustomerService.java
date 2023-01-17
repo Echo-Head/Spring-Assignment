@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CustomerService {
@@ -25,5 +26,27 @@ public class CustomerService {
     public Optional<Customer> getCustomerById(int id){
         return customerRepository.findByCustomerId(id);
     }
+
+    public Customer getCustomerByName(String firstName, String lastName){
+        Optional<Customer> value = customerRepository.findByFirstNameAndLastName(firstName,lastName);
+    return value.get();
+    }
+
+    public Set<Customer> getCustomersOffsetLimit(int o, int l){
+         return customerRepository.getSetOfCustomersUsingOffsetAndLimit(o,l);
+    }
+
+    public Boolean addCustomer(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email){
+        customerRepository.insertCustomer(customerId, firstName, lastName, country, postalCode, phone, email);
+        return true;
+    }
+
+    public Boolean changeCustomerPhoneNumber(String phone, int customerId){
+        System.out.println("den kom til service -------------------------");
+        customerRepository.updateCustomerPhoneNumber(phone,customerId);
+        return true;
+    }
+
+
 
 }

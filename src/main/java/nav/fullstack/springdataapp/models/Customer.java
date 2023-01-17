@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity()
-@Getter @Setter @ToString
+@Getter @Setter
 public class Customer {
 
     @Id
@@ -16,10 +16,10 @@ public class Customer {
     private int customerId;
 
     @Column(length = 40, nullable = false )
-    private String first_name;
+    private String firstName;
 
     @Column(length = 20, nullable = false )
-    private String last_name;
+    private String lastName;
 
 //    @Column(length = 88)
 //private String company;
@@ -37,7 +37,7 @@ public class Customer {
     private String country;
 
     @Column(length = 10)
-    private String postal_code;
+    private String postalCode;
 
     @Column(length = 24)
     private String phone;
@@ -47,8 +47,16 @@ public class Customer {
 
     @Column(length = 60, nullable = false )
     private String email;
-    private final int support_rep_id = customerId;
+    private final int supportRepId = customerId;
 
 
     public Customer(){}
+
+    @Override
+    public String toString(){
+        return firstName + lastName + customerId;
+    };
+
+
 }
+
