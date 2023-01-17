@@ -51,4 +51,7 @@ public class Customer {
 
 
     public Customer(){}
+
+    public void getName() {
+    }
 }
