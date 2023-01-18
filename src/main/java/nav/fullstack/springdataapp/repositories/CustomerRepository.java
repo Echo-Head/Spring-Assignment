@@ -32,9 +32,9 @@ public interface CustomerRepository extends JpaRepository <Customer, Integer> {
     void updateCustomerPhoneNumber(String phone, int customerId);
 
 
-    //@Query
-    //(value = "SELECT c.country, COUNT(c) as customerCount FROM Customer c GROUP BY c.country ORDER BY customerCount DESC LIMIT 1", nativeQuery = true)
-    List<Customer> countByCountryOrderByDesc();
+    @Query
+    (value = "SELECT c.country, COUNT(c) as customerCount FROM Customer c GROUP BY c.country ORDER BY customerCount DESC LIMIT 1", nativeQuery = true)
+    List<Customer> countryWithMostCustomers();
 
 
 

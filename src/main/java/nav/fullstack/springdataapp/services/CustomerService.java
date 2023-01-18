@@ -48,7 +48,7 @@ public class CustomerService {
     }
 
     public List<Customer> getCountryWithMostCustomers(){
-        List<Customer> value = customerRepository.countByCountryOrderByDesc();
+        List<Customer> value = customerRepository.countryWithMostCustomers();
         return value;
     }
 
