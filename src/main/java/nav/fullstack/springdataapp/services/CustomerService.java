@@ -41,10 +41,15 @@ public class CustomerService {
         return true;
     }
 
+    // Query won't execute
     public Boolean changeCustomerPhoneNumber(String phone, int customerId){
         customerRepository.updateCustomerPhoneNumber(phone,customerId);
         return true;
+    }
 
+    public List<Customer> getCountryWithMostCustomers(){
+        List<Customer> value = customerRepository.countByCountryByorderdesctop();
+        return value;
     }
 
 //public Boolean updateCustomerPhone(int customerId, String phone){

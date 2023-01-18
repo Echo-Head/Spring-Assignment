@@ -57,6 +57,14 @@ public class Customer {
         return firstName + lastName + customerId;
     };
 
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
 
 }
 
