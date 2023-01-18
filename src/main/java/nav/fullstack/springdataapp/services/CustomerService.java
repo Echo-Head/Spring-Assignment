@@ -27,9 +27,9 @@ public class CustomerService {
         return customerRepository.findByCustomerId(id);
     }
 
-    public Customer getCustomerByName(String firstName, String lastName){
-        Optional<Customer> value = customerRepository.findByFirstNameANDLastName("Tim","Go");
-    return value.get();
+    public List<Customer> getCustomerByName(String firstName, String lastName){
+        List<Customer> value = customerRepository.findByFirstNameOrLastNameContainingIgnoreCase(firstName,lastName);
+    return value;
     }
 
     public Set<Customer> getCustomersOffsetLimit(int o, int l){
