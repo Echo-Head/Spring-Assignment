@@ -32,7 +32,15 @@ public interface CustomerRepository extends JpaRepository <Customer, Integer> {
     Set<Customer> updateCustomerPhoneNumber(String phone, int customerId);
     //void editCustomerPhone (int customerId, String phone);
 
-    Optional<Customer>countryWithMostCustomers();
+
+    @Query
+    (value = "SELECT c.country, COUNT(c) as customerCount FROM Customer c GROUP BY c.country ORDER BY customerCount DESC LIMIT 1", nativeQuery = true)
+    Optional<Customer> findCountryWithMostCustomers();
+
+
+    @Query
+    (value = "SELECT * FROM Invoice ORDER BY total DESC LIMIT 1", nativeQuery = true)
+    Optional<Customer> findHighestSpenderCustomer();
 
 
 }

@@ -55,10 +55,10 @@ public class CustomerService {
 
 //}
 
-// for each country
-    //
-Boolean countryWithMostCustomers(){
-  customerRepository.countryWithMostCustomers()
+// SELECT country FROM customer GROUP BY country ORDER BY COUNT
+public Customer getHighestSpenderCustomer(){
+  Optional<Customer> value = customerRepository.findHighestSpenderCustomer();
+  return value.get();
 
 };
 
