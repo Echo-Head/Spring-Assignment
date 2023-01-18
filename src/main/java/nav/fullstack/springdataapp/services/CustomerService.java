@@ -19,6 +19,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    /*
     public List<Customer> readAllTheCustomers(){
         return customerRepository.findAll();
     }
@@ -40,17 +41,26 @@ public class CustomerService {
         customerRepository.insertCustomer(customerId, firstName, lastName, country, postalCode, phone, email);
         return true;
     }
+    */
 
     // Query won't execute
-    public Boolean changeCustomerPhoneNumber(String phone, int customerId){
+    /*
+    public Customer changeCustomerPhoneNumber(String phone, int customerId){
         customerRepository.updateCustomerPhoneNumber(phone,customerId);
-        return true;
+        Customer c = new Customer();
+        c.setPhone(phone);
+        c.setCustomerId(customerId);
+        return customerRepository.save(c);
+
+
+
+    }*/
+
+    public List<Object[]> getCountryWithMostCustomers(){
+        return customerRepository.countryWithMostCustomers();
+
     }
 
-    public List<Customer> getCountryWithMostCustomers(){
-        List<Customer> value = customerRepository.countryWithMostCustomers();
-        return value;
-    }
 
 //public Boolean updateCustomerPhone(int customerId, String phone){
   //      Customer customer = customerRepository.findById(customerId).get();

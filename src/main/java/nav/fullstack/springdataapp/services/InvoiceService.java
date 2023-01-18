@@ -14,11 +14,12 @@ public class InvoiceService {
 
     @Autowired
     public InvoiceService(InvoiceRepository invoiceRepository) {this.invoiceRepository = invoiceRepository;}
-
+/*
     public Optional<CustomerSpender> getHighestSpenderCustomer(){
         Optional<CustomerSpender> value = invoiceRepository.findHighestSpenderCustomer();
         return value;
     }
 
+    */
 
 }
