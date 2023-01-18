@@ -48,7 +48,7 @@ public class CustomerService {
     }
 
     public List<Customer> getCountryWithMostCustomers(){
-        List<Customer> value = customerRepository.countByCountryByorderdesctop();
+        List<Customer> value = customerRepository.countByCountryOrderByDesc();
         return value;
     }
 
@@ -60,12 +60,7 @@ public class CustomerService {
 
 //}
 
-// SELECT country FROM customer GROUP BY country ORDER BY COUNT
-public Customer getHighestSpenderCustomer(){
-  Optional<Customer> value = customerRepository.findHighestSpenderCustomer();
-  return value.get();
 
-};
 
 
 }
