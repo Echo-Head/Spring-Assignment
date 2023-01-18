@@ -47,7 +47,7 @@ public class Customer {
 
     @Column(length = 60, nullable = false )
     private String email;
-    private final int supportRepId = customerId;
+    //private final int supportRepId = customerId;
 
 
     public Customer(){}
