@@ -36,23 +36,24 @@ public class CustomerService {
     public Set<Customer> getCustomersOffsetLimit(int o, int l){
          return customerRepository.getSetOfCustomersUsingOffsetAndLimit(o,l);
     }
+//Other add customer method are in use
+    //public Boolean addCustomer(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email){
+       // customerRepository.insertCustomer(customerId, firstName, lastName, country, postalCode, phone, email);
+      //  return true;
+    //}
 
-    public Boolean addCustomer(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email){
-        customerRepository.insertCustomer(customerId, firstName, lastName, country, postalCode, phone, email);
-        return true;
-    }
-
-    public Customer addCustomer2(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email) {
-        customerRepository.insertCustomer2();
+    public Customer addCustomer2(int customerId, String fName, String lastName, String country, String postalCode, String phone, String email) {
+       // customerRepository.insertCustomer2();
         Customer customer = new Customer();
         customer.setCustomerId(customerId);
-        customer.setFirstName(firstName);
+        customer.setFirstName(fName);
         customer.setLastName(lastName);
         customer.setCountry(country);
         customer.setPostalCode(postalCode);
         customer.setPhone(phone);
         customer.setEmail(email);
-        return customerRepository.save(customer);
+        customerRepository.save(customer);
+        return customer;
     }
 
 

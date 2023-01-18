@@ -6,6 +6,7 @@ import nav.fullstack.springdataapp.repositories.InvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,12 +15,14 @@ public class InvoiceService {
 
     @Autowired
     public InvoiceService(InvoiceRepository invoiceRepository) {this.invoiceRepository = invoiceRepository;}
-/*
-    public Optional<CustomerSpender> getHighestSpenderCustomer(){
-        Optional<CustomerSpender> value = invoiceRepository.findHighestSpenderCustomer();
-        return value;
+
+    public Object[] getHighestSpenderCustomer(){
+        List<Object[]> value = invoiceRepository.findHighestSpenderCustomer();
+        List l2=value;
+        Object[] o1=(Object[])l2.get(0);
+        return o1;
     }
 
-    */
+
 
 }

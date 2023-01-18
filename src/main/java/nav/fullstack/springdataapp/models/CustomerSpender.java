@@ -14,10 +14,26 @@ public class CustomerSpender {
 @Column (nullable = false)
 private int invoiceId;
 
-@Column(nullable = false)
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    @Column(nullable = false)
 private int customerId;
 
-@Column(nullable = false)
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    @Column(nullable = false)
 public double total;
 
     public int getInvoiceId() {

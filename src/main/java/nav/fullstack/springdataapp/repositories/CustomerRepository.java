@@ -13,7 +13,8 @@ import java.util.Set;
 @Repository
 public interface CustomerRepository extends JpaRepository <Customer, Integer> {
 
-    List<Customer> findAll();
+    // FIND ALL CUSTOMERS ARE ONLY IN CustomerService
+
     Optional<Customer> findByCustomerId(int customerId);
     //@Query("SELECT first_name, last_name FROM customer")
     List<Customer> findByFirstNameOrLastNameContainingIgnoreCase(String firstName, String lastName);
@@ -21,10 +22,11 @@ public interface CustomerRepository extends JpaRepository <Customer, Integer> {
     @Query(value = "SELECT * FROM customer OFFSET ? LIMIT ?", nativeQuery = true)
     Set<Customer> getSetOfCustomersUsingOffsetAndLimit(int o, int l);
 
-    @Modifying
-    @Query(value = "INSERT INTO customer (customer_id, first_name, last_name, country, postal_code, phone, email ) VALUES (?,?,?,?,?,?,?)",nativeQuery = true)
-    void insertCustomer(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email);
-    Customer insertCustomer2();
+    // NOT IN USE. See CustomerService for add customer method.
+    //@Modifying
+    //@Query(value = "INSERT INTO customer (customer_id, first_name, last_name, country, postal_code, phone, email ) VALUES (?,?,?,?,?,?,?)",nativeQuery = true)
+    //void insertCustomer(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email);
+
 
     //@Modifying
     //@Query(value = "UPDATE customer.phone ? FROM customer = ? SET customer_id = ?")
