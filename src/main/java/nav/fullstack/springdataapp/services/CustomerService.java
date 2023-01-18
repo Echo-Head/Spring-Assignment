@@ -28,7 +28,7 @@ public class CustomerService {
     }
 
     public Customer getCustomerByName(String firstName, String lastName){
-        Optional<Customer> value = customerRepository.findByFirstNameAndLastName(firstName,lastName);
+        Optional<Customer> value = customerRepository.findByFirstNameANDLastName("Tim","Go");
     return value.get();
     }
 

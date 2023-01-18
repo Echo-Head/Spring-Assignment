@@ -14,12 +14,12 @@ public interface CustomerRepository extends JpaRepository <Customer, Integer> {
 
     Optional<Customer> findByCustomerId(int customerId);
     //@Query("SELECT first_name, last_name FROM customer")
-    Optional<Customer> findByFirstNameAndLastName(String firstName, String lastName);
+    Optional<Customer> findByFirstNameANDLastName(String firstName, String lastName);
 
     @Query(value = "SELECT * FROM customer OFFSET ? LIMIT ?", nativeQuery = true)
     Set<Customer> getSetOfCustomersUsingOffsetAndLimit(int o, int l);
 
-
+    @Modifying
     @Query(value = "INSERT INTO customer (customer_id, first_name, last_name, country, postal_code, phone, email ) VALUES (?,?,?,?,?,?,?)",nativeQuery = true)
     void insertCustomer(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email);
 
@@ -27,9 +27,10 @@ public interface CustomerRepository extends JpaRepository <Customer, Integer> {
     //@Query(value = "UPDATE customer.phone ? FROM customer = ? SET customer_id = ?")
 
 
+
+    @Query(value = "update Customer SET phone = :phone where customerId = :customerId", nativeQuery = true)
     @Modifying
-    @Query("update Customer s set s.phone = ?1 where s.customerId = ?2")
-    Set<Customer> updateCustomerPhoneNumber(String phone, int customerId);
+    void updateCustomerPhoneNumber(String phone, int customerId);
     //void editCustomerPhone (int customerId, String phone);
 
 

@@ -16,11 +16,11 @@ public class AppRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         //customerRepository.findById(1).get().getName();
-        //System.out.println(customerService.getCustomerByName("Tim","Goyer"));
+        System.out.println(customerService.getCustomerByName("Tim", "Go"));
         //System.out.println(customerService.getCustomersOffsetLimit(2,4));
         //customerService.addCustomer(668,"Bob","Billy","Finland","5363","+46 543 65 432","something@something.com");
         //customerService.changeCustomerPhoneNumber("44 444 444 44", 667);
-        customerService.getHighestSpenderCustomer();
+        //customerService.getHighestSpenderCustomer();
     }
 
 }
