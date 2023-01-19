@@ -9,11 +9,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InvoiceRepository extends JpaRepository<CustomerSpender, Integer> {
 
-    @Query(value = "SELECT customer_id as customerId, SUM(total) as totalInvoice\n" +
-            "FROM invoice\n" +
-            "GROUP BY customer_id\n" +
-            "ORDER BY totalInvoice DESC\n" +
-            "LIMIT 1", nativeQuery = true)
+    // Find the customer with the highest sum invoice total
+    @Query(value = """
+            SELECT customer_id as customerId, SUM(total) as totalInvoice
+            FROM invoice
+            GROUP BY customer_id
+            ORDER BY totalInvoice DESC
+            LIMIT 1""", nativeQuery = true)
     ICustomerSpender findHighestSpenderCustomer();
 
 

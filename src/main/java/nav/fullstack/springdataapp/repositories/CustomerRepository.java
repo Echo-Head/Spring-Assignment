@@ -12,16 +12,17 @@ import java.util.Set;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-    // FIND ALL CUSTOMERS ARE ONLY IN CustomerService
-
+    // Find a customer by their ID
     Optional<Customer> findByCustomerId(int customerId);
 
+    // Find a customer by their name
     List<Customer> findByFirstNameOrLastNameContainingIgnoreCase(String firstName, String lastName);
 
+    // Find a subset of customers using the OFFSET and LIMIT parameters
     @Query(value = "SELECT * FROM customer OFFSET ? LIMIT ?", nativeQuery = true)
     Set<Customer> getSetOfCustomersUsingOffsetAndLimit(int o, int l);
 
-    @Query
-            ("SELECT c.country, COUNT(c.country) as customerCount FROM Customer c GROUP BY c.country ORDER BY customerCount DESC LIMIT 1")
+    // Find the country with the highest amount of customers associated with it
+    @Query("SELECT c.country, COUNT(c.country) as customerCount FROM Customer c GROUP BY c.country ORDER BY customerCount DESC LIMIT 1")
     List<Object[]> countryWithMostCustomers();
 }
