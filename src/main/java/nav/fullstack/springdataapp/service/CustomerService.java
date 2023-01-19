@@ -1,4 +1,4 @@
-package nav.fullstack.springdataapp.service;
+package nav.fullstack.springdataapp.services;
 
 import nav.fullstack.springdataapp.models.Customer;
 import nav.fullstack.springdataapp.repositories.CustomerRepository;
@@ -15,29 +15,50 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository){
+    public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> readAllTheCustomers(){
+    public List<Customer> readAllTheCustomers() {
         return customerRepository.findAll();
     }
 
-    public Optional<Customer> getCustomerById(int id){
-        return customerRepository.findByCustomerId(id);
+    public Optional<Customer> getCustomerById(int customerId) {
+        return customerRepository.findByCustomerId(customerId);
     }
 
-    public Set<Customer> findAllByFirstName(String firstName){
-        return customerRepository.findAllByFirstName(firstName);
+    public List<Customer> getCustomerByName(String firstName, String lastName) {
+        List<Customer> value = customerRepository.findByFirstNameOrLastNameContainingIgnoreCase(firstName, lastName);
+        return value;
     }
 
-    public Optional<Customer> findAllByFirstNameAndLastName(String firstName, String lastName) {
-        return customerRepository.findAllByFirstNameAndLastName(firstName, lastName);
+    public Set<Customer> getCustomersOffsetLimit(int o, int l) {
+        return customerRepository.getSetOfCustomersUsingOffsetAndLimit(o, l);
     }
 
-    public Boolean updateCustomerPhone() {
-        Customer customer = customerRepository.findById(2).get();
+    public Customer addCustomer(int customerId, String fName, String lastName, String country, String postalCode, String phone, String email) {
+        Customer customer = new Customer();
+        customer.setCustomerId(customerId);
+        customer.setFirstName(fName);
+        customer.setLastName(lastName);
+        customer.setCountry(country);
+        customer.setPostalCode(postalCode);
+        customer.setPhone(phone);
+        customer.setEmail(email);
+        customerRepository.save(customer);
+        return customer;
+    }
+
+    public Boolean updateCustomerPhone(int customerId, String phone) {
+        Customer customer = customerRepository.findById(customerId).get();
+        customer.setPhone(phone);
         customerRepository.save(customer);
         return true;
+
+    }
+
+    public List<Object[]> getCountryWithMostCustomers() {
+        return customerRepository.countryWithMostCustomers();
+
     }
 }
