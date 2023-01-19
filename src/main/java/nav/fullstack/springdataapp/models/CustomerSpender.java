@@ -43,4 +43,9 @@ public double total;
     public void setInvoiceId(int invoiceId) {
         this.invoiceId = invoiceId;
     }
+
+    @Override
+    public String toString(){
+        return customerId + " " + total;
+    };
 }
