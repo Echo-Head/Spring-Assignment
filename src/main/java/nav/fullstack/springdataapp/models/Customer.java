@@ -3,9 +3,6 @@ package nav.fullstack.springdataapp.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity()
 //@Getter @Setter
@@ -23,23 +20,11 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    @Column(length = 40, nullable = false )
+    @Column(length = 40, nullable = false)
     private String firstName;
 
-    @Column(length = 20, nullable = false )
+    @Column(length = 20, nullable = false)
     private String lastName;
-
-//    @Column(length = 88)
-//private String company;
-
-//    @Column(length = 70)
-//    private String address;
-
-//    @Column(length = 40)
-//    private String city;
-
-//    @Column(length = 40)
-//    private String state;
 
     public String getCountry() {
         return country;
@@ -74,7 +59,6 @@ public class Customer {
     @Column(length = 24)
     private String phone;
 
-
     public String getEmail() {
         return email;
     }
@@ -83,18 +67,16 @@ public class Customer {
         this.email = email;
     }
 
-    @Column(length = 60, nullable = false )
+    @Column(length = 60, nullable = false)
     private String email;
 
-    //private final int supportRepId = customerId;
-
-
-    public Customer(){}
+    public Customer() {
+    }
 
     @Override
-    public String toString(){
-        return firstName +" " + lastName +" " + customerId +" " + postalCode +" " + country +" " + phone +" " + email;
-    };
+    public String toString() {
+        return firstName + " " + lastName + " " + customerId + " " + postalCode + " " + country + " " + phone + " " + email;
+    }
 
     public int getCustomerId() {
         return customerId;
@@ -103,7 +85,6 @@ public class Customer {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
-
 
     public String getLastName() {
         return lastName;
