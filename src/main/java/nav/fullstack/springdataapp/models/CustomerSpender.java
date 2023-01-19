@@ -10,9 +10,9 @@ import jakarta.persistence.Table;
 @Table(name = "invoice")
 public class CustomerSpender {
 
-@Id
-@Column (nullable = false)
-private int invoiceId;
+    @Id
+    @Column(nullable = false)
+    private int invoiceId;
 
     public int getCustomerId() {
         return customerId;
@@ -23,7 +23,7 @@ private int invoiceId;
     }
 
     @Column(nullable = false)
-private int customerId;
+    private int customerId;
 
     public double getTotal() {
         return total;
@@ -34,7 +34,7 @@ private int customerId;
     }
 
     @Column(nullable = false)
-public double total;
+    public double total;
 
     public int getInvoiceId() {
         return invoiceId;
@@ -45,7 +45,7 @@ public double total;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return customerId + " " + total;
-    };
+    }
 }
