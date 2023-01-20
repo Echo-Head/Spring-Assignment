@@ -55,12 +55,10 @@ public class CustomerService {
         customer.setPhone(phone);
         customerRepository.save(customer);
         return true;
-
     }
 
     public List<Object[]> getCountryWithMostCustomers() {
         return customerRepository.countryWithMostCustomers();
-
     }
 
     public List<String> getFavoriteGenre(int id) {
