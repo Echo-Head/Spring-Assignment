@@ -2,6 +2,7 @@ package nav.fullstack.springdataapp.services;
 
 import nav.fullstack.springdataapp.models.Customer;
 import nav.fullstack.springdataapp.repositories.CustomerRepository;
+import nav.fullstack.springdataapp.services.interfaces.ICustomerGenre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +61,10 @@ public class CustomerService {
     public List<Object[]> getCountryWithMostCustomers() {
         return customerRepository.countryWithMostCustomers();
 
+    }
+
+    public List<String> getFavoriteGenre(int id) {
+        ICustomerGenre value = customerRepository.getCustomerFavoriteGenre(id);
+        return value.getGenreName();
     }
 }
