@@ -17,6 +17,4 @@ public interface InvoiceRepository extends JpaRepository<CustomerSpender, Intege
             ORDER BY totalInvoice DESC
             LIMIT 1""", nativeQuery = true)
     ICustomerSpender findHighestSpenderCustomer();
-
-
 }
