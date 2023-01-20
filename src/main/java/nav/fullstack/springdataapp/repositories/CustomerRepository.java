@@ -25,8 +25,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     Set<Customer> getSetOfCustomersUsingOffsetAndLimit(int o, int l);
 
     // Find the country with the highest amount of customers associated with it
-    //@Query(value = "SELECT c.country, COUNT(c.country) as customerCount FROM customer c GROUP BY c.country ORDER BY customerCount DESC LIMIT 1", nativeQuery = true)
-    //IHighestCountry countryWithMostCustomers();
+    @Query(value = "SELECT c.country as highestCountry, COUNT(c.country) as customerCount FROM Customer c GROUP BY c.country ORDER BY customerCount DESC LIMIT 1")
+    IHighestCountry countryWithMostCustomers();
 
     // Find any given customer's favorite genre
     @Query(value = """

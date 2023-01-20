@@ -14,35 +14,11 @@ public class CustomerSpender {
     @Column(nullable = false)
     private int invoiceId;
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
     @Column(nullable = false)
     private int customerId;
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
     @Column(nullable = false)
     public double total;
-
-    public int getInvoiceId() {
-        return invoiceId;
-    }
-
-    public void setInvoiceId(int invoiceId) {
-        this.invoiceId = invoiceId;
-    }
 
     @Override
     public String toString() {

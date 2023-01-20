@@ -1,7 +1,6 @@
 package nav.fullstack.springdataapp.services;
 
 import nav.fullstack.springdataapp.models.Customer;
-import nav.fullstack.springdataapp.repositories.CountryRepository;
 import nav.fullstack.springdataapp.repositories.CustomerRepository;
 import nav.fullstack.springdataapp.services.interfaces.ICustomerGenre;
 import nav.fullstack.springdataapp.services.interfaces.IHighestCountry;
@@ -16,13 +15,11 @@ import java.util.Set;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
-    private final CountryRepository countryRepository;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository,
-                           CountryRepository countryRepository) {
+    public CustomerService(CustomerRepository customerRepository
+    ) {
         this.customerRepository = customerRepository;
-        this.countryRepository = countryRepository;
     }
 
     public List<Customer> readAllTheCustomers() {
@@ -63,7 +60,7 @@ public class CustomerService {
     }
 
     public String getCountryWithMostCustomers() {
-        IHighestCountry value = countryRepository.countryWithMostCustomers();
+        IHighestCountry value = customerRepository.countryWithMostCustomers();
         return "The country with the highest amount of customers is " + value.getHighestCountry();
     }
 

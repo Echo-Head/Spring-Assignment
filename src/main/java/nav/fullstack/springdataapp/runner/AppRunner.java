@@ -22,10 +22,10 @@ public class AppRunner implements ApplicationRunner {
         //System.out.println(customerService.getCustomerById(13));
         //System.out.println(customerService.getCustomerByName("Tim", "Go"));
         //System.out.println(customerService.getCustomersOffsetLimit(2, 4));
-        //customerService.addCustomer(702, "Kleetus", "Johnson", "USA", "5363", "+46 543 65 432", "something@something.com");
-        //customerService.updateCustomerPhone(701, "88888");
+        //customerService.addCustomer(703, "Duke", "Nukem", "USA", "5363", "+46 543 65 432", "something@something.com");
+        //customerService.updateCustomerPhone(701, "44444");
         //System.out.println(customerService.getCountryWithMostCustomers());
         //System.out.println(invoiceService.getHighestSpenderCustomer());
-        System.out.println(customerService.getFavoriteGenre(4));
+        //System.out.println(customerService.getFavoriteGenre(4));
     }
 }
