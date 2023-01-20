@@ -24,8 +24,8 @@ public class AppRunner implements ApplicationRunner {
         //System.out.println(customerService.getCustomersOffsetLimit(2, 4));
         //customerService.addCustomer(702, "Kleetus", "Johnson", "USA", "5363", "+46 543 65 432", "something@something.com");
         //customerService.updateCustomerPhone(701, "88888");
-        System.out.println(customerService.getCountryWithMostCustomers());
+        //System.out.println(customerService.getCountryWithMostCustomers());
         //System.out.println(invoiceService.getHighestSpenderCustomer());
-        //System.out.println(customerService.getFavoriteGenre(4));
+        System.out.println(customerService.getFavoriteGenre(4));
     }
 }
